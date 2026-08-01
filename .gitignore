@@ -1,5 +1,6 @@
 comfy_models/
 comfy_output/
 comfy_nodes/
+comfy_user/
 .gemini/
 .local/
