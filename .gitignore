@@ -1,4 +1,5 @@
 comfy_models/
 comfy_output/
+comfy_nodes/
 .gemini/
 .local/
