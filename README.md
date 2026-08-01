@@ -30,14 +30,13 @@ docker run --rm --gpus all nvidia/cuda:12.4.0-base-ubuntu22.04 nvidia-smi
 ├── docker-compose.yml      # Service orchestration with GPU and volume config
 ├── comfy_models/           # AI model checkpoints (mounted to /workspace/models)
 ├── comfy_nodes/            # Custom node extensions (mounted to /workspace/custom_nodes)
-│   └── ComfyUI-Manager/    # Pre-installed extension manager
 └── comfy_output/           # Generated images and outputs (mounted to /workspace/output)
 ```
 
 | Directory | Container Path | Description |
 |-----------|---------------|-------------|
 | `comfy_models/` | `/workspace/models` | Place model checkpoints here (e.g. Stable Diffusion, LoRA, VAE). |
-| `comfy_nodes/` | `/workspace/custom_nodes` | Custom node extensions. ComfyUI-Manager is included by default. |
+| `comfy_nodes/` | `/workspace/custom_nodes` | Custom node extensions (e.g. ComfyUI-Manager). |
 | `comfy_output/` | `/workspace/output` | All generated images and outputs are saved here. |
 
 > **Note:** `comfy_models/`, `comfy_nodes/`, and `comfy_output/` are gitignored. Their contents persist on your host machine across container rebuilds.
@@ -85,7 +84,20 @@ docker compose up -d --build
 
 ### Installing ComfyUI-Manager
 
-[ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager) is already included in the `comfy_nodes/` directory. After starting the container, click the **Manager** button in the ComfyUI interface to access it.
+[ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager) lets you browse, install, and update custom nodes directly from the ComfyUI interface. To install it, clone the repository into the `comfy_nodes/` directory:
+
+```bash
+cd comfy_nodes
+git clone https://github.com/ltdrdata/ComfyUI-Manager.git
+```
+
+Then restart the container to load the manager:
+
+```bash
+docker compose restart
+```
+
+After restarting, click the **Manager** button in the ComfyUI interface to access it.
 
 Through the Manager you can:
 
