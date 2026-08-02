@@ -5,6 +5,7 @@ RUN apt update && \
 	apt install -y \
 	git \
 	curl \
+	wget \
 	vim && \
 	rm -rf /var/lib/apt/lists/*
 
@@ -24,4 +25,4 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Launch ComfyUI and ensure it binds to 0.0.0.0 so you can access it via browser
-CMD ["python", "main.py", "--listen", "0.0.0.0"]
+CMD ["python", "main.py", "--listen", "0.0.0.0", "--enable-manager"]
