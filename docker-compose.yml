@@ -5,15 +5,16 @@ services:
     ports:
       - "8188:8188"
     volumes:
-      # Maps your local models directory to the container
-      - ./comfy_models:/workspace/models
-      # Maps your local output directory so you never lose generated images
-      - ./comfy_output:/workspace/output
+      - ./comfy_models:/home/comfyui/workspace/models
+      - ./comfy_output:/home/comfyui/workspace/output
+      - ./comfy_nodes:/home/comfyui/workspace/custom_nodes
+      - ./comfy_user:/home/comfyui/workspace/user
+      - ./.local:/home/comfyui/.local
+      - ./.gemini:/home/comfyui/.gemini
     deploy:
       resources:
         reservations:
           devices:
-            # This block is the modern way to pass through your RTX 3060 GPU
             - driver: nvidia
               count: all
               capabilities: [gpu]

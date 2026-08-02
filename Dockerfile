@@ -1,10 +1,21 @@
 FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
 
-# Set working directory
-WORKDIR /workspace
-
 # Install essential system packages (Git is required to clone ComfyUI)
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN apt update && \
+	apt install -y \
+	git \
+	curl \
+	vim && \
+	rm -rf /var/lib/apt/lists/*
+
+# Create a non-root user
+RUN useradd -m -s /bin/bash comfyui
+
+# Switch to the non-root user
+USER comfyui
+
+# Set working directory inside the user's home
+WORKDIR /home/comfyui/workspace
 
 # Clone the ComfyUI repository
 RUN git clone https://github.com/comfyanonymous/ComfyUI.git .
