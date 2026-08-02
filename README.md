@@ -153,3 +153,7 @@ Install the Antigravity CLI using these command inside running container:
 ```
 curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
+Post Installation Antigravity CLI, add PATH for `agy` command:
+```
+echo 'export PATH="/home/comfyui/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+```
