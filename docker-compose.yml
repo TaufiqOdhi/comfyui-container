@@ -11,6 +11,7 @@ services:
       - ./comfy_user:/home/comfyui/workspace/user
       - ./.local:/home/comfyui/.local
       - ./.gemini:/home/comfyui/.gemini
+      - ./script:/home/comfyui/script  
     deploy:
       resources:
         reservations:
