@@ -24,5 +24,11 @@ RUN git clone https://github.com/comfyanonymous/ComfyUI.git .
 # Install ComfyUI's specific Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Add path for ~/.local
+RUN bash -c "echo 'export PATH="/home/comfyui/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc"
+
+# Install ComfyUI-Manager dependency
+RUN pip install -r manager_requirements.txt
+
 # Launch ComfyUI and ensure it binds to 0.0.0.0 so you can access it via browser
 CMD ["python", "main.py", "--listen", "0.0.0.0", "--enable-manager"]
