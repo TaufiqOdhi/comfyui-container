@@ -30,7 +30,8 @@ docker run --rm --gpus all nvidia/cuda:12.4.0-base-ubuntu22.04 nvidia-smi
 ├── docker-compose.yml      # Service orchestration with GPU and volume config
 ├── comfy_models/           # AI model checkpoints (mounted to /workspace/models)
 ├── comfy_nodes/            # Custom node extensions (mounted to /workspace/custom_nodes)
-└── comfy_output/           # Generated images and outputs (mounted to /workspace/output)
+├── comfy_output/           # Generated images and outputs (mounted to /workspace/output)
+└── script/                 # External utility scripts (mounted to /home/comfyui/script)
 ```
 
 | Directory | Container Path | Description |
@@ -38,8 +39,9 @@ docker run --rm --gpus all nvidia/cuda:12.4.0-base-ubuntu22.04 nvidia-smi
 | `comfy_models/` | `/workspace/models` | Place model checkpoints here (e.g. Stable Diffusion, LoRA, VAE). |
 | `comfy_nodes/` | `/workspace/custom_nodes` | Custom node extensions (e.g. ComfyUI-Manager). |
 | `comfy_output/` | `/workspace/output` | All generated images and outputs are saved here. |
+| `script/` | `/home/comfyui/script` | External utility scripts and pipelines (cloned from other repositories). |
 
-> **Note:** `comfy_models/`, `comfy_nodes/`, and `comfy_output/` are gitignored. Their contents persist on your host machine across container rebuilds.
+> **Note:** `comfy_models/`, `comfy_nodes/`, `comfy_output/`, and `script/` are gitignored. Their contents persist on your host machine across container rebuilds.
 
 ## Getting Started
 
