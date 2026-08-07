@@ -30,5 +30,8 @@ RUN bash -c "echo 'export PATH="/home/comfyui/.local/bin:$PATH"' >> ~/.bashrc &&
 # Install ComfyUI-Manager dependency
 RUN pip install -r manager_requirements.txt
 
+# Install pyaml
+RUN pip install pyaml
+
 # Launch ComfyUI and ensure it binds to 0.0.0.0 so you can access it via browser
 CMD ["python", "main.py", "--listen", "0.0.0.0", "--enable-manager"]
