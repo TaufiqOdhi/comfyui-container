@@ -1,0 +1,20 @@
+{
+  "name": "ComfyUI DevContainer",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "comfyui",
+  "workspaceFolder": "/home/comfyui/script",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/comfyui/project,type=bind",
+  "remoteUser": "comfyui",
+  "overrideCommand": false,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "python.formatting.provider": "none"
+      }
+    }
+  }
+}
