@@ -17,5 +17,11 @@
         "python.formatting.provider": "none"
       }
     }
+  },
+  "hostRequirements": {
+    "cpus": 6
+  },
+  "remoteEnv": {
+    "OMP_NUM_THREADS": "6"
   }
 }
